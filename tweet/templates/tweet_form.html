@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Create Tweet
+{% endblock %}
+
+{% block content %}
+
+<div class="container" style="max-width:700px;">
+
+    <div class="card border-0 shadow rounded-4 p-4">
+
+        <h2 class="mb-4 fw-bold text-primary">
+
+            {% if form.instance.pk %}
+
+            Edit Tweet
+
+            {% else %}
+
+            Create a Tweet
+
+            {% endif %}
+
+        </h2>
+
+        <form method="POST"
+              enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit"
+                    class="btn btn-primary rounded-pill px-4">
+
+                Submit Tweet
+
+            </button>
+
+        </form>
+
+        <a href="{% url 'tweet_list' %}"
+           class="btn btn-outline-secondary mt-4 rounded-pill">
+
+            Back to Feed
+
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

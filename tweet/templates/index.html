@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title %}
+TweetBar
+{% endblock %}
+
+{% block content %}
+
+<div class="text-center mt-5">
+
+    <h1 class="display-3 fw-bold text-primary">
+        Welcome to TweetBar
+    </h1>
+
+    <p class="lead text-muted mt-4">
+        Share your thoughts, connect with people, and explore trending conversations.
+    </p>
+
+    <div class="mt-5">
+
+        {% if user.is_authenticated %}
+
+        <a href="{% url 'tweet_list' %}"
+           class="btn btn-primary btn-lg me-3">
+            Explore Tweets
+        </a>
+
+        <a href="{% url 'tweet_create' %}"
+           class="btn btn-outline-dark btn-lg">
+            Create Tweet
+        </a>
+
+        {% else %}
+
+        <a href="{% url 'register' %}"
+           class="btn btn-primary btn-lg me-3">
+            Get Started
+        </a>
+
+        <a href="{% url 'login' %}"
+           class="btn btn-outline-dark btn-lg">
+            Login
+        </a>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}
